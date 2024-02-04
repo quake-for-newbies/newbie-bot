@@ -1,0 +1,20 @@
+commandPrefix: "!"
+commands:
+  # Static Command list
+  - trigger: help
+  - response: Hello world!
+servers:
+  # Server list
+  # Example entry
+  # Game must be either "ql" or "q3"
+  #
+  #- ip: 157.230.119.146
+  #  port: 27960
+  #  game: ql
+
+  - ip: 157.230.119.146
+    port: 27960
+    game: ql
+  - ip: 157.230.119.146
+    port: 27961
+    game: q3
