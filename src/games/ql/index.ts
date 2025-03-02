@@ -29,7 +29,7 @@ export const getServerList = async (): Promise<Server[]> => {
 };
 
 export const createConnectURI = (host: string, port: number): string =>
-  `steam://connect/${host}:${port}`;
+  `https://quakenewbies.com/connect/${host}:${port}`;
 
 export const findServers: ServerFinder = async (
   query
