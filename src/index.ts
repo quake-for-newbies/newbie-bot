@@ -1,10 +1,10 @@
 import dotenv from "dotenv";
 import { env, exit } from "process";
-import { getConfig } from "./config";
-import Discord from "discord.js";
-import { handleMessage } from "./message";
+import { getConfig } from "./config.js";
+import { Client, Events, GatewayIntentBits, Partials } from 'discord.js';
+import { handleMessage } from "./message.js";
 
-dotenv.config();
+dotenv.config({quiet: true});
 const token = env.BOT_TOKEN;
 
 if (!token) {
@@ -20,12 +20,24 @@ async function main() {
     exit(2);
   }
 
-  const client = new Discord.Client();
+  const client = new Client({
+    intents: [
+      GatewayIntentBits.Guilds,
+      GatewayIntentBits.GuildMessages,
+      GatewayIntentBits.MessageContent,
+      GatewayIntentBits.GuildMembers,
+      GatewayIntentBits.DirectMessages,
+    ],
+    partials: [
+      Partials.Channel,
+      Partials.Message // needed to receive DMs
+    ]
+  });
 
-  client.on("ready", () => {
+  client.on(Events.ClientReady, () => {
     console.log(`Logged in as ${client.user?.tag}!`);
   });
-  client.on("message", handleMessage);
+  client.on(Events.MessageCreate, handleMessage);
   client.login(token);
 }
 

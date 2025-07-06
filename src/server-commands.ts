@@ -1,6 +1,6 @@
-import { EmbedField, Message } from "discord.js";
-import { getConfig } from "./config";
-import { ServerInfo, serverMap } from "./games";
+import { EmbedField, Message, TextChannel } from "discord.js";
+import { getConfig } from "./config.js";
+import { ServerInfo, serverMap } from "./games/index.js";
 import groupBy from "lodash.groupby";
 
 export const createServerStatus = (info: ServerInfo): EmbedField => {
@@ -33,10 +33,11 @@ export const serverStatus = async (message: Message) => {
     )
   ).reduce((acc, curr) => acc.concat(curr), []);
 
-  message.channel.send("Current server status:", {
-    embed: {
+  (message.channel as TextChannel).send({
+    content: "Current server status:",
+    embeds: [{
       color: 14540811,
       fields: statuses.map(createServerStatus),
-    },
+    }]
   });
 };

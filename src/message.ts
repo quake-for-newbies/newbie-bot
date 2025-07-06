@@ -1,6 +1,6 @@
-import { Message } from "discord.js";
-import { getConfig } from "./config";
-import { serverStatus } from "./server-commands";
+import { Message, TextChannel } from "discord.js";
+import { getConfig } from "./config.js";
+import { serverStatus } from "./server-commands.js";
 
 const SERVERS_TRIGGER = "servers";
 
@@ -8,7 +8,7 @@ export const handleHelp = (message: Message): void => {
   const { commands, commandPrefix } = getConfig();
   const cmdFmt = (cmd: string): string => `\`${commandPrefix}${cmd}\``;
   const customCommands = commands.map((v) => cmdFmt(v.trigger)).join(", ");
-  message.channel.send(
+  (message.channel as TextChannel).send(
     `
  Simple commands: ${customCommands}.
 
@@ -38,7 +38,7 @@ export const handleMessage = (message: Message) => {
   );
 
   if (custom) {
-    message.channel.send(custom.response);
+    (message.channel as TextChannel).send(custom.response);
     return;
   }
 

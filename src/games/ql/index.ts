@@ -1,6 +1,6 @@
-import { ServerFinder, ServerInfo } from "../types";
 import got from "got";
-import { ServerListReponse, Server } from "./types";
+import { ServerFinder, ServerInfo } from "../types.js";
+import { ServerListReponse, Server } from "./types.js";
 
 const now = () => new Date().getTime();
 

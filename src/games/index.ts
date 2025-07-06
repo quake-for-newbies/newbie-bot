@@ -1,8 +1,8 @@
-import { findServers as qlServerFinder } from "./ql";
-import { findServers as q3ServerFinder } from "./q3";
-import { ServerFinder } from "./types";
+import { findServers as qlServerFinder } from "./ql/index.js";
+import { findServers as q3ServerFinder } from "./q3/index.js";
+import { ServerFinder } from "./types.js";
 
-export * from "./types";
+export * from "./types.js";
 
 export type ServerMap = Readonly<{ [k: string]: ServerFinder }>;
 

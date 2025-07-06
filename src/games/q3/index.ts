@@ -1,6 +1,6 @@
-import { ServerFinder, ServerInfo } from "../types";
+import { ServerFinder, ServerInfo } from "../types.js";
 import dgram from "dgram";
-import { serverStatus } from "../../server-commands";
+import { serverStatus } from "../../server-commands.js";
 
 // \xFF\xFF\xFF\xFFgetstatus
 const GET_STATUS = Uint8Array.from([

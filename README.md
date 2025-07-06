@@ -4,7 +4,7 @@ A discord bot for the [Quake For Newbies](https://discord.io/QuakeForNewbies) di
 
 ## Requirements
 
-- Node.js 14+
+- Node.js v22+
 
 ## Setup
 
@@ -15,6 +15,9 @@ npm install
 ```
 
 Create a [discord bot account](https://discordapp.com/developers/applications), create a bot user for the application, get it's token, set it in _.env.sample_ file and save it as _.env_.
+
+Also make sure that all intents in the `Privileged Gateway Intents` are enabled - `Presence Intent`,
+`Server Members Intent` and `Message Content Intent`.
 
 Invite the bot into a server of your choosing:
 

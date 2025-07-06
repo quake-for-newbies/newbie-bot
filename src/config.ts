@@ -1,5 +1,6 @@
 import fs from "fs";
-import { join } from "path";
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
 import YAML from "yaml";
 
 export interface ConfigServer {
@@ -26,7 +27,8 @@ export const getConfig = (): Readonly<Config> => {
     return parsedConfig;
   }
 
-  const file = fs.readFileSync(join(__dirname, "..", "config.yaml"), "utf8");
+  const basePath = dirname(fileURLToPath(import.meta.url));
+  const file = fs.readFileSync(join(basePath, "..", "config.yaml"), "utf8");
   parsedConfig = YAML.parse(file);
   return Object.assign({}, parsedConfig);
 };
