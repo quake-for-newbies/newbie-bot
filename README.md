@@ -10,7 +10,7 @@ A discord bot for the [Quake For Newbies](https://discord.io/QuakeForNewbies) di
 
 Install dependencies.
 
-```
+```sh
 npm install
 ```
 
@@ -27,6 +27,14 @@ Edit _config.yaml.sample_ and save it as _config.yaml_.
 
 Build the bot and start it:
 
-```
+```sh
 npm run build && npm start
+```
+
+or, just run it in a container:
+
+```sh
+docker build -t newbie-bot .
+# assuming BOT_CONFIG_PATH=/data/config.yaml in .env
+docker run -i -t --rm --env-file=/path/to/.env -v /path/to/config:/data newbie-bot
 ```
