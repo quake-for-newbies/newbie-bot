@@ -28,7 +28,8 @@ export const getConfig = (): Readonly<Config> => {
   }
 
   const basePath = dirname(fileURLToPath(import.meta.url));
-  const file = fs.readFileSync(join(basePath, "..", "config.yaml"), "utf8");
+  const path = process.env.BOT_CONFIG_PATH || join(basePath, "..", "config.yaml");
+  const file = fs.readFileSync(path, "utf8");
   parsedConfig = YAML.parse(file);
   return Object.assign({}, parsedConfig);
 };
